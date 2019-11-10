@@ -1,0 +1,10 @@
+directed weighted
+alpha=beta=3
+charlie=delta=5
+elephant=foxtrot=12
+geoff=houses=5
+infiltration=juxtapose=1
+karen=lily=4
+mommy=noob=3
+opium=
+stewie=stewie=5

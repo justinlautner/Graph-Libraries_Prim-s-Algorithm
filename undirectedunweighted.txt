@@ -1,0 +1,11 @@
+undirected unweighted
+a=b
+a=a
+f=
+b=c
+b=b
+c=d
+c=e
+z=
+x=
+y=

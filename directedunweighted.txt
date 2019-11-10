@@ -1,0 +1,7 @@
+directed unweighted
+a=b
+b=c
+c=d
+c=e
+d=b
+f=
