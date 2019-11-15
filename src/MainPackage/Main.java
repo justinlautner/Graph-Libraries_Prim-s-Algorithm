@@ -39,22 +39,27 @@ public class Main {
         }
 
         //Get size of vertices to later set size of linkedlist
+        ArrayList<String> arrayTemp = new ArrayList<>();
         while (sc.hasNextLine()){
+
             String temp = sc.nextLine();
-
-            /*
-             *  Estimates the near maximum amount of vertices a graph can create, avoiding costly calculations
-             *  of determining the exact amount and cross-referencing a list unnecessarily
-             *  i.e. thought to be more efficient [and readable] to create extra lists than calculate
-             *  exact amount of vertices
-             */
-            vertices += 2;
-
             array.add(temp);
+
+            String var1 = temp.substring(0, temp.indexOf("="));
+            String var2 = temp.substring(temp.indexOf("=") + 1, temp.lastIndexOf("="));
+            if (!arrayTemp.contains(var1)){
+                arrayTemp.add(var1);
+                vertices++;
+            }
+            if(!arrayTemp.contains(var2)){
+                arrayTemp.add(var2);
+                vertices++;
+            }
+
         }//end while loop
 
-        //Create instance of graph to determine size of and instantiate linked list
-        Graph graph = new Graph(weighted, vertices);
+        //Instantiate graph size
+        Graph.startGraph(weighted, vertices);
 
         //switch to determine which type of graph to create
         switch (header){
@@ -117,6 +122,7 @@ public class Main {
                     }
                 }
                 Graph.printWeighted();
+                Graph.Prims_Algorithm();
                 break;
             default:
                 System.out.println("Invalid Header");

@@ -7,10 +7,10 @@ class Graph {
 
     private static int vertices, sourceLocation, destinationLocation;
     private static LinkedList<Edge> [] adjacencylist;
-    private static LinkedList<WeightedEdge> [] adjacencylistWeighted;
+    public static LinkedList<WeightedEdge> [] adjacencylistWeighted;
     private static ArrayList<String> verticesArray = new ArrayList<>();
 
-    Graph(boolean weighted, int vertices) {
+    static void startGraph(boolean weighted, int vertices) {
 
         Graph.vertices = vertices;
 
@@ -146,5 +146,40 @@ class Graph {
             System.out.println();
         }
     }// end printGraph method
+
+    static void Prims_Algorithm(){
+
+        int [] key = new int[vertices];
+
+        HeapNode [] heapNodes = new HeapNode[vertices];
+        for (int i = 0; i <vertices ; i++) {
+            heapNodes[i] = new HeapNode(i, Integer.MAX_VALUE);
+            key[i] = Integer.MAX_VALUE;
+        }
+
+        BinaryHeap.StartHeap(vertices);
+
+        for (int i = 0; i <vertices ; i++) {
+            BinaryHeap.Insert(heapNodes[i]);
+        }
+
+
+        while(!BinaryHeap.isEmpty()){
+
+            HeapNode extractedNode = BinaryHeap.ExtractMin();
+
+            int extractedVertex = extractedNode.vertex;
+
+            LinkedList<WeightedEdge> list = adjacencylistWeighted[extractedVertex];
+            for (int i = 0; i <list.size() ; i++) {
+                WeightedEdge edge = list.get(i);
+
+                String destination = edge.destinationNode;
+                int newKey = Integer.parseInt(edge.weight);
+                
+            }
+        }
+
+    }
 
 }//end Graph class
