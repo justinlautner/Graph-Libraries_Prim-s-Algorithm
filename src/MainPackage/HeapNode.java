@@ -3,9 +3,9 @@ package MainPackage;
 class HeapNode {
 
     int vertex;
-    int key;
+    float key;
 
-    HeapNode(int v, int k){
+    HeapNode(int v, float k){
         this.vertex = v;
         this.key = k;
     }

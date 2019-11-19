@@ -1,13 +1,16 @@
 package MainPackage;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 class Graph {
 
     private static int vertices, sourceLocation, destinationLocation;
     private static LinkedList<Edge> [] adjacencylist;
-    public static LinkedList<WeightedEdge> [] adjacencylistWeighted;
+    private static LinkedList<WeightedEdge> [] adjacencylistWeighted;
     private static ArrayList<String> verticesArray = new ArrayList<>();
 
     static void startGraph(boolean weighted, int vertices) {
@@ -149,13 +152,24 @@ class Graph {
 
     static void Prims_Algorithm(){
 
-        int [] key = new int[vertices];
+        boolean[] inHeap = new boolean[vertices];
+        float [] key = new float[vertices];
+        Mods[] mods = new Mods[vertices];
+        Map<String, Integer> keyMap = new HashMap<>();
 
-        HeapNode [] heapNodes = new HeapNode[vertices];
-        for (int i = 0; i <vertices ; i++) {
+        HeapNode[] heapNodes = new HeapNode[vertices];
+        for (int i = 0; i < vertices ; i++) {
             heapNodes[i] = new HeapNode(i, Integer.MAX_VALUE);
+            mods[i] = new Mods();
+            mods[i].parent = -1;
+            inHeap[i] = true;
+            System.out.println(i);
+            LinkedList<WeightedEdge> list1 = adjacencylistWeighted[i];
+            keyMap.put(list1.get(i).destinationNode, i);
             key[i] = Integer.MAX_VALUE;
         }
+
+        heapNodes[0].key = 0;
 
         BinaryHeap.StartHeap(vertices);
 
@@ -169,17 +183,41 @@ class Graph {
             HeapNode extractedNode = BinaryHeap.ExtractMin();
 
             int extractedVertex = extractedNode.vertex;
+            inHeap[extractedVertex] = false;
 
             LinkedList<WeightedEdge> list = adjacencylistWeighted[extractedVertex];
             for (int i = 0; i <list.size() ; i++) {
                 WeightedEdge edge = list.get(i);
 
                 String destination = edge.destinationNode;
-                int newKey = Integer.parseInt(edge.weight);
-                
+                float newKey = Float.parseFloat(edge.weight);
+
+                if (key[keyMap.get(destination)] > newKey){
+
+                    BinaryHeap.ChangeKey(heapNodes[i], newKey);
+
+                    mods[keyMap.get(destination)].parent = extractedVertex;
+                    mods[keyMap.get(destination)].weight = newKey;
+                    key[keyMap.get(destination)] = newKey;
+
+                }
+
             }
         }
 
+        printMST(mods);
+
+    }
+
+    private static void printMST(Mods[] mods){
+        int total_min_weight = 0;
+        System.out.println("Minimum Spanning Tree: ");
+        for (int i = 1; i <vertices ; i++) {
+            System.out.println("Edge: " + i + " - " + mods[i].parent +
+                    " weight: " + mods[i].weight);
+            total_min_weight += mods[i].weight;
+        }
+        System.out.println("Total minimum key: " + total_min_weight);
     }
 
 }//end Graph class

@@ -1,11 +1,15 @@
 package MainPackage;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BinaryHeap {
 
     private static int currentSize;
     private static HeapNode[] heap;
-    private static int[] Position;
+    //private static int[] Position;
+    private static Map<Integer, Integer> Position;
 
     private static void swap(int i, int j){
         HeapNode temp = heap[i];
@@ -28,12 +32,13 @@ public class BinaryHeap {
     private static void Heapify_Down(int i){
 
         int n = currentSize;
-        int j = i;
+        int j = 0;
         if ((2 * i) > n){
             return;
         }
         else if ((2 * i) < n){
-            Heapify_Down(j);
+            //int left = 2 * i, right = 2 * i + 1;
+            j = 2 * i + 1;
         }
         else if ((2 * i) == n){
             j = 2 * i;
@@ -51,7 +56,7 @@ public class BinaryHeap {
         heap[0] = new HeapNode(-1, Integer.MIN_VALUE);
         currentSize = 0;
 
-        Position = new int[N];
+        Position = new HashMap<>();
 
     }
 
@@ -61,7 +66,8 @@ public class BinaryHeap {
         int index = currentSize;
         heap[currentSize] = v;
 
-        Position[v.vertex] = index;
+        //Position[v.vertex] = index;
+        Position.put(v.vertex, index);
         Heapify_Up(index);
         
     }
@@ -75,6 +81,7 @@ public class BinaryHeap {
     private static void Delete(int i){
 
         heap[i] = null;
+        Position.remove(i);
         Heapify_Up(i + 1);
 
     }
@@ -83,7 +90,8 @@ public class BinaryHeap {
 
         HeapNode min = heap[1];
         HeapNode node = heap[currentSize];
-        Position[node.vertex] = 1;
+        //Position[node.vertex] = 1;
+        Position.put(node.vertex, 1);
         heap[1] = node;
         heap[currentSize] = null;
         Heapify_Down(1);
@@ -95,14 +103,18 @@ public class BinaryHeap {
 
     private static void Delete(HeapNode v){
 
-        Delete(Position[v.vertex]);
+        heap[Position.get(v.vertex)] = null;
+        Heapify_Up(Position.get(v.vertex + 1));
 
     }
 
-    static void ChangeKey(HeapNode v, int newValue){
+    static void ChangeKey(HeapNode v, float newValue){
 
-        HeapNode temp = heap[newValue];
-        heap[v.key] = temp;
+        int index = Position.get(v.vertex);
+
+        HeapNode temp = heap[index];
+        temp.key = newValue;
+        heap[index] = temp;
 
     }
 

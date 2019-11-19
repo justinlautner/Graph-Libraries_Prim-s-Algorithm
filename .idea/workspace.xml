@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7befe8-3565-4acc-81f2-e6ad46761662" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainPackage/HeapNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainPackage/Mods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/HeapNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/WeightedEdge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/WeightedEdge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/Prims_Algorithm/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainPackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Prims_Algorithm/BinaryHeap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Prims_Algorithm/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPackage/HeapNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/HeapNode.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
