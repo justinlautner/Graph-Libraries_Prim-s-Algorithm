@@ -8,10 +8,14 @@ public class BinaryHeap {
 
     private static int currentSize;
     private static HeapNode[] heap;
-    //private static int[] Position;
     private static Map<Integer, Integer> Position;
 
     private static void swap(int i, int j){
+        HeapNode jNode = heap[j];
+        HeapNode iNode = heap[i];
+        Position.put(jNode.vertex, i);
+        Position.put(iNode.vertex, j);
+
         HeapNode temp = heap[i];
         heap[i] = heap[j];
         heap[j] = temp;
@@ -32,13 +36,14 @@ public class BinaryHeap {
     private static void Heapify_Down(int i){
 
         int n = currentSize;
-        int j = 0;
+        int j = i;
         if ((2 * i) > n){
             return;
         }
         else if ((2 * i) < n){
-            //int left = 2 * i, right = 2 * i + 1;
-            j = 2 * i + 1;
+            int left = 2 * i, right = 2 * i + 1;
+            ChangeKey(heap[j], heap[left].key);
+            ChangeKey(heap[j], heap[right].key);
         }
         else if ((2 * i) == n){
             j = 2 * i;
@@ -66,7 +71,6 @@ public class BinaryHeap {
         int index = currentSize;
         heap[currentSize] = v;
 
-        //Position[v.vertex] = index;
         Position.put(v.vertex, index);
         Heapify_Up(index);
         
@@ -90,7 +94,7 @@ public class BinaryHeap {
 
         HeapNode min = heap[1];
         HeapNode node = heap[currentSize];
-        //Position[node.vertex] = 1;
+
         Position.put(node.vertex, 1);
         heap[1] = node;
         heap[currentSize] = null;
@@ -102,7 +106,6 @@ public class BinaryHeap {
     }
 
     private static void Delete(HeapNode v){
-
         heap[Position.get(v.vertex)] = null;
         Heapify_Up(Position.get(v.vertex + 1));
 
@@ -113,8 +116,17 @@ public class BinaryHeap {
         int index = Position.get(v.vertex);
 
         HeapNode temp = heap[index];
+        float original = temp.key;
+
         temp.key = newValue;
         heap[index] = temp;
+
+        if (newValue < original){
+            Heapify_Up(heap[index].vertex);
+        }
+        else if (newValue > original){
+            Heapify_Down(heap[index].vertex);
+        }
 
     }
 

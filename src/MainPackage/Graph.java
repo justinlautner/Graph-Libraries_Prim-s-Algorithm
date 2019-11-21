@@ -163,20 +163,19 @@ class Graph {
             mods[i] = new Mods();
             mods[i].parent = -1;
             inHeap[i] = true;
-            System.out.println(i);
             LinkedList<WeightedEdge> list1 = adjacencylistWeighted[i];
-            keyMap.put(list1.get(i).destinationNode, i);
+            for (WeightedEdge weightedEdge : list1) {
+                keyMap.put(weightedEdge.destinationNode, i);
+            }
             key[i] = Integer.MAX_VALUE;
         }
 
         heapNodes[0].key = 0;
 
         BinaryHeap.StartHeap(vertices);
-
         for (int i = 0; i <vertices ; i++) {
             BinaryHeap.Insert(heapNodes[i]);
         }
-
 
         while(!BinaryHeap.isEmpty()){
 
@@ -189,28 +188,30 @@ class Graph {
             for (int i = 0; i <list.size() ; i++) {
                 WeightedEdge edge = list.get(i);
 
-                String destination = edge.destinationNode;
-                float newKey = Float.parseFloat(edge.weight);
 
-                if (key[keyMap.get(destination)] > newKey){
+                if (inHeap[i]){
+                    String destination = edge.destinationNode;
+                    float newKey = Float.parseFloat(edge.weight);
 
-                    BinaryHeap.ChangeKey(heapNodes[i], newKey);
+                    if (key[keyMap.get(destination)] > newKey){
 
-                    mods[keyMap.get(destination)].parent = extractedVertex;
-                    mods[keyMap.get(destination)].weight = newKey;
-                    key[keyMap.get(destination)] = newKey;
+                        BinaryHeap.ChangeKey(heapNodes[keyMap.get(destination)], newKey);
 
+                        mods[keyMap.get(destination)].parent = extractedVertex;
+                        mods[keyMap.get(destination)].weight = newKey;
+                        key[keyMap.get(destination)] = newKey;
+                    }
                 }
 
             }
         }
 
-        printMST(mods);
+        printMinimumSpanningTree(mods);
 
     }
 
-    private static void printMST(Mods[] mods){
-        int total_min_weight = 0;
+    private static void printMinimumSpanningTree(Mods[] mods){
+        float total_min_weight = 0;
         System.out.println("Minimum Spanning Tree: ");
         for (int i = 1; i <vertices ; i++) {
             System.out.println("Edge: " + i + " - " + mods[i].parent +
