@@ -1,5 +1,6 @@
 package MainPackage;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -155,7 +156,9 @@ class Graph {
         boolean[] inHeap = new boolean[vertices];
         float [] key = new float[vertices];
         Mods[] mods = new Mods[vertices];
-        Map<String, Integer> keyMap = new HashMap<>();
+        //Map<String, Integer> keyMap = new HashMap<>();
+        ArrayList<String> keyMap = new ArrayList<>();
+
 
         HeapNode[] heapNodes = new HeapNode[vertices];
         for (int i = 0; i < vertices ; i++) {
@@ -165,10 +168,13 @@ class Graph {
             inHeap[i] = true;
             LinkedList<WeightedEdge> list1 = adjacencylistWeighted[i];
             for (WeightedEdge weightedEdge : list1) {
-                keyMap.put(weightedEdge.destinationNode, i);
+                //keyMap.put(weightedEdge.destinationNode, i);
+                keyMap.add(weightedEdge.destinationNode);
+                //System.out.print(weightedEdge.destinationNode + i);
             }
             key[i] = Integer.MAX_VALUE;
         }
+        //System.out.println(keyMap);
 
         heapNodes[0].key = 0;
 
@@ -183,25 +189,39 @@ class Graph {
 
             int extractedVertex = extractedNode.vertex;
             inHeap[extractedVertex] = false;
+            //BinaryHeap.display();
+            System.out.println(extractedVertex);
 
             LinkedList<WeightedEdge> list = adjacencylistWeighted[extractedVertex];
-            for (int i = 0; i <list.size() ; i++) {
+            for (int i = 0; i < list.size() ; i++) {
                 WeightedEdge edge = list.get(i);
-
+                System.out.println(edge.weight);
 
                 if (inHeap[i]){
                     String destination = edge.destinationNode;
                     float newKey = Float.parseFloat(edge.weight);
+                    System.out.println(destination);
 
-                    if (key[keyMap.get(destination)] > newKey){
+                    /*if (key[keyMap.get(destination)] > newKey){
 
                         BinaryHeap.ChangeKey(heapNodes[keyMap.get(destination)], newKey);
 
                         mods[keyMap.get(destination)].parent = extractedVertex;
                         mods[keyMap.get(destination)].weight = newKey;
                         key[keyMap.get(destination)] = newKey;
+                    }*/
+                    if (key[keyMap.indexOf(destination)] > newKey){
+
+                        BinaryHeap.ChangeKey(heapNodes[keyMap.indexOf(destination)], newKey);
+
+                        mods[keyMap.indexOf(destination)].parent = extractedVertex;
+                        mods[keyMap.indexOf(destination)].weight = newKey;
+                        key[keyMap.indexOf(destination)] = newKey;
+                        keyMap.remove(destination);
+                        System.out.println(keyMap);
                     }
                 }
+                BinaryHeap.display();
 
             }
         }

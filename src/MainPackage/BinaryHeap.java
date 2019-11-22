@@ -42,12 +42,25 @@ public class BinaryHeap {
         }
         else if ((2 * i) < n){
             int left = 2 * i, right = 2 * i + 1;
-            ChangeKey(heap[j], heap[left].key);
-            ChangeKey(heap[j], heap[right].key);
+            /*if (heap[left] == null){
+                j = right;
+            }
+            else if (heap[right] == null){
+                j = left;
+            }*/
+            if (heap[left].key < heap[right].key){
+                j = left;
+            }
+            else if (heap[right].key < heap[left].key){
+                j = right;
+            }
         }
         else if ((2 * i) == n){
             j = 2 * i;
         }
+        /*if (heap[j] == null){
+            return;
+        }*/
         if (heap[j].key < heap[i].key){
             swap(i, j);
             Heapify_Down(j);

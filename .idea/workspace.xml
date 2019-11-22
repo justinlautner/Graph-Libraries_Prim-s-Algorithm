@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9c7befe8-3565-4acc-81f2-e6ad46761662" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Graph.java" afterDir="false" />
     </list>
@@ -28,7 +29,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Network Programming [2019]/IncomingServerRequests" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
