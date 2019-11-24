@@ -4,7 +4,7 @@ package MainPackage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BinaryHeap {
+class BinaryHeap {
 
     private static int currentSize;
     private static HeapNode[] heap;
@@ -42,12 +42,6 @@ public class BinaryHeap {
         }
         else if ((2 * i) < n){
             int left = 2 * i, right = 2 * i + 1;
-            /*if (heap[left] == null){
-                j = right;
-            }
-            else if (heap[right] == null){
-                j = left;
-            }*/
             if (heap[left].key < heap[right].key){
                 j = left;
             }
@@ -58,9 +52,6 @@ public class BinaryHeap {
         else if ((2 * i) == n){
             j = 2 * i;
         }
-        /*if (heap[j] == null){
-            return;
-        }*/
         if (heap[j].key < heap[i].key){
             swap(i, j);
             Heapify_Down(j);
@@ -147,7 +138,7 @@ public class BinaryHeap {
         return currentSize == 0;
     }
 
-    public static void display() {
+    static void display() {
         for (int i = 0; i <=currentSize; i++) {
             System.out.println(" " + heap[i].vertex + "   key   " + heap[i].key);
         }

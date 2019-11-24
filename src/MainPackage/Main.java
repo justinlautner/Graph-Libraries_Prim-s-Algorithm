@@ -9,9 +9,7 @@ public class Main {
 
     private static StringBuilder line = new StringBuilder();
     private static ArrayList<String> array = new ArrayList<>();
-    private static ArrayList<String> verticesList = new ArrayList<>();
     private static int vertices;
-    //private static boolean weighted, directed;
 
     public static void main(String[] args) throws FileNotFoundException {
 
