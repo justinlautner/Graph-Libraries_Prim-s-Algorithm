@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7befe8-3565-4acc-81f2-e6ad46761662" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/salesman.gl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainPackage/TSPNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/META-INF/GraphLibraries.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/BinaryHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphLibraries/MainPackage/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/BinaryHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Main.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,29 +31,22 @@
   </component>
   <component name="ProjectId" id="1S1NEbd4gcDOqTrF8dyuMUbYCQJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Network Programming [2019]/IncomingServerRequests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -70,6 +67,18 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -96,5 +105,31 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1774" y="898" width="611" height="388" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575585686984">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state x="1774" y="898" width="611" height="388" key="#com.intellij.fileTypes.FileTypeChooser/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575585686984" />
+    <state width="1840" height="499" key="GridCell.Tab.0.bottom" timestamp="1575600675020">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state width="1840" height="499" key="GridCell.Tab.0.bottom/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575600675020" />
+    <state width="1840" height="499" key="GridCell.Tab.0.center" timestamp="1575600675020">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state width="1840" height="499" key="GridCell.Tab.0.center/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575600675020" />
+    <state width="1840" height="499" key="GridCell.Tab.0.left" timestamp="1575600675019">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state width="1840" height="499" key="GridCell.Tab.0.left/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575600675019" />
+    <state width="1840" height="499" key="GridCell.Tab.0.right" timestamp="1575600675020">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state width="1840" height="499" key="GridCell.Tab.0.right/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575600675020" />
+    <state x="2309" y="682" width="1372" height="794" key="new project wizard" timestamp="1575177453437">
+      <screen x="1080" y="0" width="3840" height="2160" />
+    </state>
+    <state x="2309" y="682" width="1372" height="794" key="new project wizard/1080.0.3840.2160/4920.504.1920.1080/0.322.1080.1920@1080.0.3840.2160" timestamp="1575177453437" />
   </component>
 </project>

@@ -1,7 +1,6 @@
 package MainPackage;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 class Graph {
 
@@ -9,6 +8,10 @@ class Graph {
     private static LinkedList<Edge> [] adjacencylist;
     private static LinkedList<WeightedEdge> [] adjacencylistWeighted;
     private static ArrayList<String> verticesArray = new ArrayList<>();
+    private static float globalMinimumCost = Integer.MAX_VALUE;
+    private static ArrayList<TSPNode> globalMinimumPath = new ArrayList<>();
+    //private static HashMap<String, Float> verticesWeight = new HashMap<>();
+    //private static int index;
 
     static void startGraph(boolean weighted, int vertices) {
 
@@ -94,11 +97,11 @@ class Graph {
         }
         //Ensures no destination is added to vertices without an edge
         if(!destinationNode.equals("")){
-            if (!verticesArray.contains(destinationNode) && !destinationNode.equals("")){
+            if (!verticesArray.contains(destinationNode)){
                 verticesArray.add(destinationNode);
                 destinationLocation = verticesArray.lastIndexOf(destinationNode);
             }
-            else if (!destinationNode.equals("")){
+            else {
                 destinationLocation = verticesArray.lastIndexOf(destinationNode);
             }
 
@@ -120,6 +123,7 @@ class Graph {
     }//end addEdge method
 
     static void printWeighted() {
+        System.out.println(verticesArray);
         for (int i = 0; i < verticesArray.size(); i++) {
             LinkedList<WeightedEdge> list = adjacencylistWeighted[i];
             System.out.print(verticesArray.get(i) + ": ");
@@ -131,6 +135,7 @@ class Graph {
             }
             System.out.println();
         }
+        Collections.sort(verticesArray);
     }//end printWeighted method
 
     static void printGraph()    {
@@ -152,22 +157,34 @@ class Graph {
         boolean[] inHeap = new boolean[vertices];
         float [] key = new float[vertices];
         Mods[] mods = new Mods[vertices];
-        //Map<String, Integer> keyMap = new HashMap<>();
-        ArrayList<String> keyMap = new ArrayList<>();
+        Map<String, Integer> keyMap = new HashMap<>();
+        //ArrayList<String> keyMap = new ArrayList<>();
 
-
+        int temp = 0;
         HeapNode[] heapNodes = new HeapNode[vertices];
         for (int i = 0; i < vertices ; i++) {
             heapNodes[i] = new HeapNode(i, Integer.MAX_VALUE);
             mods[i] = new Mods();
             mods[i].parent = -1;
             inHeap[i] = true;
+            //System.out.print("this is in heap: " + i);
             LinkedList<WeightedEdge> list1 = adjacencylistWeighted[i];
             for (WeightedEdge weightedEdge : list1) {
-                //keyMap.put(weightedEdge.destinationNode, i);
-                keyMap.add(weightedEdge.destinationNode);
+                if (!keyMap.containsValue(i)){
+                    keyMap.put(weightedEdge.destinationNode, i);
+                }
+
+                //keyMap.add(weightedEdge.destinationNode);
                 //System.out.print(weightedEdge.destinationNode + i);
+                //System.out.print(keyMap.get(weightedEdge.destinationNode));
             }
+            /*for (int k = 0; k < list1.size(); k++){
+                WeightedEdge edge1 = list1.get(k);
+                keyMap.put(edge1.destinationNode, k);
+            }*/
+            /*for (int l = 0; l < keyMap.size(); l++){
+                System.out.print(keyMap.get(list1.get(l).destinationNode));
+            }*/
             key[i] = Integer.MAX_VALUE;
         }
         //System.out.println(keyMap);
@@ -186,27 +203,28 @@ class Graph {
             int extractedVertex = extractedNode.vertex;
             inHeap[extractedVertex] = false;
             //BinaryHeap.display();
-            System.out.println(extractedVertex);
+            //System.out.println("extractedvertex: " + extractedVertex);
 
             LinkedList<WeightedEdge> list = adjacencylistWeighted[extractedVertex];
             for (int i = 0; i < list.size() ; i++) {
                 WeightedEdge edge = list.get(i);
-                System.out.println(edge.weight);
+                //System.out.println(edge.weight);
 
-                if (inHeap[i]){
+                //System.out.print("is " + keyMap.get(edge.destinationNode) + " inheap? " + inHeap[i]);
+                if (inHeap[keyMap.get(edge.destinationNode)]){
                     String destination = edge.destinationNode;
                     float newKey = Float.parseFloat(edge.weight);
-                    System.out.println(destination);
 
-                    /*if (key[keyMap.get(destination)] > newKey){
+                    //System.out.print("key " + key[keyMap.get(destination)] + " newkey" + newKey);
+                    if (key[keyMap.get(destination)] > newKey){
 
                         BinaryHeap.ChangeKey(heapNodes[keyMap.get(destination)], newKey);
 
                         mods[keyMap.get(destination)].parent = extractedVertex;
                         mods[keyMap.get(destination)].weight = newKey;
                         key[keyMap.get(destination)] = newKey;
-                    }*/
-                    if (key[keyMap.indexOf(destination)] > newKey){
+                    }
+                    /*if (key[keyMap.indexOf(destination)] > newKey){
 
                         BinaryHeap.ChangeKey(heapNodes[keyMap.indexOf(destination)], newKey);
 
@@ -215,9 +233,9 @@ class Graph {
                         key[keyMap.indexOf(destination)] = newKey;
                         keyMap.remove(destination);
                         System.out.println(keyMap);
-                    }
+                    }*/
                 }
-                BinaryHeap.display();
+                //BinaryHeap.display();
 
             }
         }
@@ -235,6 +253,76 @@ class Graph {
             total_min_weight += mods[i].weight;
         }
         System.out.println("Total minimum key: " + total_min_weight);
+    }
+
+    private static void travellingSalesmanProblem(LinkedList<WeightedEdge> graph, String currentVertice, ArrayList<TSPNode> currentPath, float pathCost, ArrayList<String> visited){
+        Collections.sort(visited);
+        System.out.println("SORTED" + visited);
+        if (verticesArray.equals(visited)){
+            for (int j = 0; j < graph.size(); j++){
+                //add last node to start node & update cost
+                if (graph.get(j).destinationNode.equals(currentPath.get(0).vertice)){
+                    currentPath.add(new TSPNode(graph.get(j).destinationNode, Float.parseFloat(graph.get(j).weight)));
+                    globalMinimumCost += Float.parseFloat(graph.get(j).weight);
+                }
+            }
+            System.out.println(globalMinimumPath + "HELLO?");
+            if (pathCost < globalMinimumCost){
+                globalMinimumCost = pathCost;
+                globalMinimumPath = currentPath;
+                System.out.println(globalMinimumCost);
+            }
+        }
+        else{
+            visited.add(currentVertice);
+            System.out.println(visited);
+            for (int j = 0; j < graph.size(); j++){
+                if (!visited.contains(graph.get(j).destinationNode)){
+                    currentPath.add(new TSPNode(graph.get(j).destinationNode, Float.parseFloat(graph.get(j).weight)));
+                    System.out.println(graph.get(j).destinationNode);
+                    System.out.println(pathCost);
+
+                    travellingSalesmanProblem(adjacencylistWeighted[j], graph.get(j).destinationNode, currentPath, pathCost + Float.parseFloat(graph.get(j).weight), visited);
+                    currentPath.remove(j); System.out.println("IS THIS HAPPENING?");
+                }
+                //travellingSalesmanProblem(adjacencylistWeighted[index++], currentVertice, currentPath, pathCost, visited);
+            }
+
+        }
+
+    }
+
+    public static void initiateTS(){
+
+        /*for (int i = 0; i < verticesArray.size(); i++) {
+            LinkedList<WeightedEdge> list = adjacencylistWeighted[i];
+            System.out.print(verticesArray.get(i) + ": ");
+            for (int j = 0; j < list.size() ; j++) {
+                if (j != 0){
+                    System.out.print( ", ");
+                }
+                System.out.print("( " + list.get(j).destinationNode + ", " + list.get(j).weight + " )");
+            }
+            System.out.println();
+        }
+*/
+        LinkedList<WeightedEdge> list = adjacencylistWeighted[0];
+        ArrayList<String> visited = new ArrayList<>();
+        //visited.add(verticesArray.get(0));
+        ArrayList<TSPNode> currentPath = new ArrayList<>();
+        float pathCost = 0;
+        String currentVertice = verticesArray.get(0);
+        travellingSalesmanProblem(list, currentVertice, currentPath, pathCost, visited);
+
+    }
+
+    public static void printTSP(){
+        for (int i = 0; i < globalMinimumPath.size(); i++){
+            System.out.print("DESTINATION: " + globalMinimumPath.get(i).vertice + " WEIGHT: " + globalMinimumPath.get(i).weight);
+            System.out.println();
+            System.out.println("TOTAL COST OF PATH: " + globalMinimumCost);
+        }
+
     }
 
 }//end Graph class

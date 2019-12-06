@@ -118,6 +118,7 @@ class BinaryHeap {
     static void ChangeKey(HeapNode v, float newValue){
 
         int index = Position.get(v.vertex);
+        //System.out.print(Position.get(v.vertex));
 
         HeapNode temp = heap[index];
         float original = temp.key;

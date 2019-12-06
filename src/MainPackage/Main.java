@@ -120,7 +120,9 @@ public class Main {
                     }
                 }
                 Graph.printWeighted();
-                Graph.Prims_Algorithm();
+                Graph.initiateTS();
+                Graph.printTSP(); System.out.println("IS THIS WORKING? WTF");
+                //Graph.Prims_Algorithm();
                 break;
             default:
                 System.out.println("Invalid Header");
